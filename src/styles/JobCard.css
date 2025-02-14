@@ -1,0 +1,157 @@
+/* styles/JobCard.css */
+.job-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+    border-left: 5px solid #007bff;
+    margin-bottom: 12px;
+    width: 100%;
+    max-width: 90%;
+}
+
+.job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.job-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #333;
+}
+
+.company {
+    font-weight: 400;
+    font-size: 14px;
+    color: #777;
+}
+
+.job-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #555;
+    margin-top: 6px;
+}
+
+.job-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.job-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.job-status.applied {
+    background-color: #f0f8ff;
+    color: #007bff;
+}
+
+.job-status.interview {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.job-status.offer {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.job-status.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.job-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.job-edit-button,
+.job-delete-button,
+.job-save-button,
+.job-cancel-button {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.job-edit-button {
+    background-color: #ffc107;
+    color: black;
+}
+
+.job-delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.job-save-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.job-cancel-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+.job-edit-button:hover {
+    background-color: #e0a800;
+}
+
+.job-delete-button:hover {
+    background-color: #c82333;
+}
+
+.job-save-button:hover {
+    background-color: #218838;
+}
+
+.job-cancel-button:hover {
+    background-color: #5a6268;
+}
+
+.job-card-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.job-input,
+.job-status-dropdown {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .job-card {
+        max-width: 100%;
+    }
+
+    .job-card-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+

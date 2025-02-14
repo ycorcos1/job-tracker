@@ -1,0 +1,43 @@
+/* styles/JobList.css */
+.job-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.job-list-filters {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+.pages button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.pages button:hover {
+    background-color: #0056b3;
+}
+
+.pages button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
