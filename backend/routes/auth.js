@@ -2,31 +2,13 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Pool } = require("pg");
-
 require("dotenv").config();
-
+const pool = require("../config/db");
 const router = express.Router();
-// const pool = new Pool({
-//     user: process.env.DB_USER,
-//     host: process.env.DB_HOST,
-//     database: process.env.DB_NAME,
-//     password: process.env.DB_PASSWORD,
-//     port: process.env.DB_PORT,
-// });
-
-// const pool = new Pool({
-//     connectionString: process.env.DATABASE_URL,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
-
-const pool = require("../config/db"); // Use shared connection
 
 router.get("/", (req, res) => {
     res.json({ message: "Users API is working" });
 });
-
 
 // **Signup Route**
 router.post("/signup", async (req, res) => {

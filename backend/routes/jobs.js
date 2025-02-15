@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../config/db");
 const router = express.Router();
 
-// ✅ Add a new job application
+// Add a new job application
 router.post("/", async (req, res) => {
     const { user_id, job_title, company_name, site_used, date_applied } = req.body;
     
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-// ✅ Edit an existing job application
+// Edit an existing job application
 router.patch("/:id", async (req, res) => {
     const { id } = req.params;
     const { job_title, company_name, site_used, date_applied, status } = req.body;
@@ -44,7 +44,7 @@ router.patch("/:id", async (req, res) => {
     }
 });
 
-// ✅ Delete a job application
+// Delete a job application
 router.delete("/:id", async (req, res) => {
     const { id } = req.params;
 
@@ -62,7 +62,7 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-// ✅ Retrieve all jobs for a user (no pagination or filtering)
+// Retrieve all jobs for a user (no pagination or filtering)
 router.get("/", async (req, res) => {
     let { user_id, status, sort, page = 1, limit = 10 } = req.query;
 
@@ -93,7 +93,7 @@ router.get("/", async (req, res) => {
     // Apply sorting
     query += sort === "earliest" ? " ORDER BY date_applied ASC" : " ORDER BY date_applied DESC";
 
-    // ✅ Pagination logic (Apply LIMIT and OFFSET correctly)
+    // Pagination logic (Apply LIMIT and OFFSET correctly)
     query += ` LIMIT $${paramIndex} OFFSET $${paramIndex + 1}`;
     values.push(limit, (page - 1) * limit);
 

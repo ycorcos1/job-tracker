@@ -12,7 +12,7 @@ function ChangePassword() {
         confirmNewPassword: ""
     });
 
-    const { user } = useContext(AuthContext); // Get user from context
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
