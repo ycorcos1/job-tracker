@@ -11,7 +11,7 @@ function JobCard({ job, onJobUpdated }) {
 
     const handleUpdate = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/jobs/${job.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/jobs/${job.id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
@@ -28,7 +28,7 @@ function JobCard({ job, onJobUpdated }) {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/jobs/${job.id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/jobs/${job.id}`, {
                 method: "DELETE",
             });
 

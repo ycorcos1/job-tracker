@@ -16,14 +16,14 @@ function JobList() {
         setError("");
         try {
             const queryParams = new URLSearchParams({
-                user_id: user.id,
+                user_id: user?.id,
                 page,
                 limit: 10,
                 sort,
                 status: statusFilter || "",
             }).toString();
 
-            const response = await fetch(`http://localhost:5000/api/jobs?${queryParams}`);
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/jobs?${queryParams}`);
             const data = await response.json();
 
             if (response.ok) {

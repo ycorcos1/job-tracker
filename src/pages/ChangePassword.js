@@ -21,21 +21,20 @@ function ChangePassword() {
 
     const handleChangePassword = async (e) => {
         e.preventDefault();
-        setError(""); // Clear previous errors
-        setSuccess(""); // Clear previous success messages
+        setError("");
+        setSuccess("");
 
-        // Ensure new passwords match
         if (formData.newPassword !== formData.confirmNewPassword) {
             setError("New passwords do not match.");
             return;
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/users/change-password", {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/change-password`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    username: user?.username, // Pass the username from AuthContext
+                    username: user?.username,
                     oldPassword: formData.oldPassword,
                     newPassword: formData.newPassword
                 }),

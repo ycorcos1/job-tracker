@@ -9,7 +9,6 @@ function Login() {
     const navigate = useNavigate();
     const { user, login } = useContext(AuthContext);
 
-    // Redirect logged-in users away from login page
     useEffect(() => {
         if (user) {
             navigate("/dashboard");
@@ -18,7 +17,7 @@ function Login() {
 
     const handleLogin = async (formData) => {
         try {
-            const response = await fetch("http://localhost:5000/api/login", {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
@@ -26,8 +25,8 @@ function Login() {
 
             const data = await response.json();
             if (response.ok) {
-                login(data.user);  // Save user in context & localStorage
-                navigate("/dashboard"); // Redirect after login
+                login(data.user);
+                navigate("/dashboard");
             } else {
                 setError(data.error || "Login failed.");
             }

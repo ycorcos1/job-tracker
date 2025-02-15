@@ -6,7 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Header from './components/Header';
-import Footer from './components/Footer';
 import ChangePassword from './pages/ChangePassword';
 
 function App() {
@@ -20,12 +19,11 @@ function App() {
                         <Route path="/signup" element={<Signup />} />
                         <Route element={<PrivateRoute />}>
                             <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/change-password" element={<ChangePassword />} /> {/* New route */}
+                            <Route path="/change-password" element={<ChangePassword />} />
                         </Route>
                         <Route path="/" element={<Navigate to="/login" />} />
                     </Routes>
                 </main>
-                {/* <Footer /> */}
             </Router>
         </AuthProvider>
     );

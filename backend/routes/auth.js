@@ -21,16 +21,13 @@ router.post("/signup", async (req, res) => {
         return res.status(400).json({ error: "All fields are required" });
     }
     try {
-        // Check if user already exists
         const existingUser = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
         if (existingUser.rows.length > 0) {
             return res.status(400).json({ error: "Username already exists" });
         }
 
-        // Hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Store user in DB (date_created is handled automatically by PostgreSQL)
         const result = await pool.query(
             "INSERT INTO users (username, password, first_name, last_name) VALUES ($1, $2, $3, $4) RETURNING id, username",
             [username, hashedPassword, first_name, last_name]
@@ -83,30 +80,19 @@ router.post("/change-password", async (req, res) => {
     }
 
     try {
-        // Get user from database
         const userResult = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
         if (userResult.rows.length === 0) {
             return res.status(400).json({ error: "User not found" });
         }
         const user = userResult.rows[0];
 
-        // Verify old password
         const isMatch = await bcrypt.compare(oldPassword, user.password);
         if (!isMatch) {
             return res.status(400).json({ error: "Old password is incorrect" });
         }
-
-        // Hash the new password
         const hashedNewPassword = await bcrypt.hash(newPassword, 10);
 
-        // Update password in the database
         await pool.query("UPDATE users SET password = $1 WHERE username = $2", [hashedNewPassword, username]);
-
-        // const updateResult = await pool.query("UPDATE users SET password = $1 WHERE username = $2", [hashedNewPassword, username]);
-        // if (updateResult.rowCount === 0) {
-        //     return res.status(500).json({ error: "Failed to update password" });
-        // }
-        
         res.json({ message: "Password updated successfully" });
     } catch (error) {
         res.status(500).json({ error: "Failed to update password" });
