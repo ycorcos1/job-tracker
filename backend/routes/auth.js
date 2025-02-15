@@ -14,12 +14,19 @@ const router = express.Router();
 //     port: process.env.DB_PORT,
 // });
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
+// const pool = new Pool({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
+
+const pool = require("../config/db"); // Use shared connection
+
+router.get("/", (req, res) => {
+    res.json({ message: "Users API is working" });
 });
+
 
 // **Signup Route**
 router.post("/signup", async (req, res) => {
