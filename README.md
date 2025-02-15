@@ -92,7 +92,7 @@ DELETE /api/jobs/:id
 ```
 
 ## Future Improvements
-- **User Authentication (Login/Signup)**
+- **Delete Account Function**
 - **Enhanced Job Application Notes & Attachments**
 - **Email Reminders for Follow-ups**
 - **Export Job Applications as CSV**
