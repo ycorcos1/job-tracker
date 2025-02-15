@@ -17,12 +17,14 @@ app.use(cors());
 //     port: process.env.DB_PORT,
 // });
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+// const pool = new Pool({
+//     connectionString: process.env.DATABASE_URL,
+//     ssl: {
+//         rejectUnauthorized: false
+//     }
+// });
+
+const pool = require("./config/db");
 
 // Test route
 app.get("/", (req, res) => {
